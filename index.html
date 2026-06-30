@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LG T80KMMB3Z – Keyur Mobile & Electronics</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow:  #FFC400;
+    --yellow2: #FFD740;
+    --dark:    #1E1E1E;
+    --mid:     #2E2E2E;
+    --card:    #363636;
+    --gray:    #646464;
+    --lgray:   #9A9A9A;
+    --bg:      #282828;
+    --white:   #FFFFFF;
+    /* LG accent — classic LG red-on-dark feel, but keeping brand colours */
+    --accent:  #B50000;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  .reveal {
+    opacity:0; transform:translateY(30px);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal-left {
+    opacity:0; transform:translateX(-30px);
+    transition:opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal-left.visible { opacity:1; transform:translateX(0); }
+  .reveal-right {
+    opacity:0; transform:translateX(30px);
+    transition:opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal-right.visible { opacity:1; transform:translateX(0); }
+
+  /* HEADER */
+  .header {
+    background:var(--dark); border-bottom:3px solid var(--yellow);
+    position:sticky; top:0; z-index:100; box-shadow:0 4px 20px rgba(0,0,0,0.5);
+  }
+  .header-inner { display:flex; align-items:center; gap:14px; padding:14px 20px; }
+  .brand-name { font-family:'Syne',sans-serif; font-size:17px; font-weight:800; line-height:1.2; }
+  .brand-name span { color:var(--yellow); }
+  .brand-sub { font-size:10px; color:var(--lgray); letter-spacing:1.5px; text-transform:uppercase; margin-top:2px; }
+
+  /* HERO */
+  .hero {
+    min-height:100vh;
+    background:linear-gradient(160deg,var(--dark) 0%,#2a2a2a 60%,#1a1a1a 100%);
+    display:flex; flex-direction:column; align-items:center;
+    justify-content:center; text-align:center; padding:60px 24px 80px;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; width:500px; height:500px;
+    background:radial-gradient(circle,rgba(255,196,0,0.07) 0%,transparent 70%);
+    top:-100px; right:-100px; border-radius:50%; animation:pulse 4s ease-in-out infinite;
+  }
+  .hero::after {
+    content:''; position:absolute; width:350px; height:350px;
+    background:radial-gradient(circle,rgba(255,196,0,0.05) 0%,transparent 70%);
+    bottom:-80px; left:-60px; border-radius:50%; animation:pulse 4s ease-in-out infinite 2s;
+  }
+  @keyframes pulse { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.15);opacity:0.7;} }
+
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(255,196,0,0.15); border:1px solid rgba(255,196,0,0.4);
+    color:var(--yellow); font-size:11px; font-weight:600;
+    letter-spacing:2px; text-transform:uppercase;
+    padding:7px 18px; border-radius:50px; margin-bottom:28px;
+    animation:fadeDown 0.8s ease forwards;
+  }
+  @keyframes fadeDown { from{opacity:0;transform:translateY(-20px);} to{opacity:1;transform:translateY(0);} }
+
+  .wm-hero {
+    width:180px; height:180px; margin:0 auto 30px;
+    position:relative; animation:floatUp 0.9s ease 0.2s both;
+  }
+  @keyframes floatUp { from{opacity:0;transform:translateY(40px) scale(0.85);} to{opacity:1;transform:translateY(0) scale(1);} }
+  .wm-body {
+    width:160px; height:160px;
+    background:linear-gradient(145deg,#333,#1a1a1a); border-radius:22px;
+    border:2px solid rgba(255,196,0,0.3); position:absolute; top:10px; left:10px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.05);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .drum-outer {
+    width:110px; height:110px; border-radius:50%;
+    background:conic-gradient(from 0deg,#2a2a2a,#3a3a3a,#2a2a2a,#444,#2a2a2a);
+    border:4px solid rgba(255,196,0,0.4);
+    display:flex; align-items:center; justify-content:center;
+    animation:drumSpin 5s linear infinite;
+    box-shadow:0 0 20px rgba(255,196,0,0.15);
+  }
+  @keyframes drumSpin { to{transform:rotate(360deg);} }
+  .drum-center {
+    width:50px; height:50px;
+    background:radial-gradient(circle,#404040,#1a1a1a);
+    border-radius:50%; border:3px solid rgba(255,196,0,0.5);
+    box-shadow:inset 0 2px 8px rgba(0,0,0,0.5);
+  }
+  .water-ring {
+    position:absolute; border:2px solid rgba(255,196,0,0.2);
+    border-radius:50%; animation:ripple 3s ease-out infinite;
+  }
+  .water-ring:nth-child(1){width:180px;height:180px;top:0;left:0;animation-delay:0s;}
+  .water-ring:nth-child(2){width:210px;height:210px;top:-15px;left:-15px;animation-delay:1s;}
+  .water-ring:nth-child(3){width:240px;height:240px;top:-30px;left:-30px;animation-delay:2s;}
+  @keyframes ripple { 0%{transform:scale(0.8);opacity:0.6;} 100%{transform:scale(1.1);opacity:0;} }
+
+  .hero h1 {
+    font-family:'Syne',sans-serif; font-size:clamp(28px,7.5vw,44px);
+    font-weight:800; line-height:1.15; margin-bottom:10px;
+    animation:fadeUp 0.8s ease 0.3s both;
+  }
+  .hero h1 em { color:var(--yellow); font-style:normal; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+  .model-pill {
+    display:inline-block; background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1); font-size:11px;
+    color:var(--lgray); padding:5px 14px; border-radius:50px;
+    letter-spacing:1.2px; text-transform:uppercase; margin:8px 0 16px;
+    animation:fadeUp 0.8s ease 0.4s both;
+  }
+  .hero-desc {
+    font-size:16px; color:rgba(255,255,255,0.7);
+    max-width:340px; margin:0 auto 24px; line-height:1.65;
+    animation:fadeUp 0.8s ease 0.5s both;
+  }
+  .stars { color:var(--yellow); font-size:22px; letter-spacing:4px; animation:fadeUp 0.8s ease 0.6s both; }
+
+  .scroll-hint {
+    position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    color:var(--lgray); font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
+    animation:bounce 2s ease infinite;
+  }
+  .scroll-hint svg { opacity:0.5; }
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(6px);} }
+
+  /* STATS BAR */
+  .stats-bar {
+    background:var(--yellow);
+    display:grid; grid-template-columns:repeat(4,1fr);
+    position:relative; overflow:hidden;
+  }
+  .stats-bar::before {
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);
+    animation:shimmer 3s ease infinite;
+  }
+  @keyframes shimmer { from{transform:translateX(-100%);} to{transform:translateX(100%);} }
+  .stat-item { padding:20px 8px; text-align:center; border-right:1px solid rgba(0,0,0,0.1); position:relative; }
+  .stat-item:last-child { border-right:none; }
+  .stat-num { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; color:var(--dark); line-height:1; margin-bottom:4px; }
+  .stat-label { font-size:10px; color:rgba(0,0,0,0.55); text-transform:uppercase; letter-spacing:0.5px; line-height:1.3; }
+
+  /* SECTIONS */
+  .section { padding:48px 22px; border-bottom:1px solid rgba(255,255,255,0.06); }
+  .section-eyebrow {
+    font-size:10px; text-transform:uppercase; letter-spacing:2.5px;
+    color:var(--yellow); margin-bottom:6px; display:flex; align-items:center; gap:8px;
+  }
+  .section-eyebrow::after { content:''; flex:1; height:1px; background:rgba(255,196,0,0.25); }
+  .section-title { font-family:'Syne',sans-serif; font-size:24px; font-weight:800; margin-bottom:24px; line-height:1.2; }
+
+  /* FEATURE CARDS */
+  .features-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .feat-card {
+    background:var(--card); border:1px solid rgba(255,196,0,0.12);
+    border-radius:18px; padding:20px 16px;
+    transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),border-color 0.3s,box-shadow 0.3s;
+    cursor:default;
+  }
+  .feat-card:hover { transform:translateY(-5px) scale(1.02); border-color:var(--yellow); box-shadow:0 12px 32px rgba(255,196,0,0.12); }
+  .feat-card.wide { grid-column:1 / -1; }
+  .feat-card.wide:hover { transform:translateY(-4px); }
+  .feat-icon { font-size:32px; margin-bottom:12px; display:block; transition:transform 0.3s; }
+  .feat-card:hover .feat-icon { transform:scale(1.2) rotate(-5deg); }
+  .feat-title { font-family:'Syne',sans-serif; font-size:12px; font-weight:700; color:var(--yellow); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.6px; }
+  .feat-desc { font-size:13px; color:rgba(255,255,255,0.68); line-height:1.6; }
+
+  /* WHY BUY */
+  .why-list { list-style:none; }
+  .why-item {
+    display:flex; gap:16px; padding:18px 0; border-bottom:1px solid rgba(255,255,255,0.06);
+    align-items:flex-start; transition:background 0.25s; border-radius:12px; padding-left:8px;
+  }
+  .why-item:hover { background:rgba(255,196,0,0.04); }
+  .why-item:last-child { border-bottom:none; }
+  .why-num {
+    font-family:'Syne',sans-serif; font-size:30px; font-weight:800;
+    color:transparent; -webkit-text-stroke:1.5px var(--yellow);
+    min-width:42px; line-height:1; transition:color 0.25s,-webkit-text-stroke 0.25s;
+  }
+  .why-item:hover .why-num { color:var(--yellow); -webkit-text-stroke:0px; }
+  .why-text strong { display:block; font-size:15px; font-weight:600; margin-bottom:4px; color:var(--white); }
+  .why-text span { font-size:13px; color:rgba(255,255,255,0.58); line-height:1.55; }
+
+  /* PROGRAMS */
+  .programs-scroll { display:flex; flex-wrap:wrap; gap:9px; }
+  .prog-pill {
+    background:rgba(255,196,0,0.09); border:1px solid rgba(255,196,0,0.28);
+    border-radius:50px; padding:7px 16px; font-size:12px; color:var(--yellow2);
+    font-weight:500; transition:background 0.2s,transform 0.2s; white-space:nowrap; cursor:default;
+  }
+  .prog-pill:hover { background:var(--yellow); color:var(--dark); transform:scale(1.06); border-color:var(--yellow); }
+
+  /* BIG STATS */
+  .big-stats { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .big-stat {
+    background:var(--card); border-radius:16px; padding:22px 16px;
+    text-align:center; border:1px solid rgba(255,196,0,0.1);
+    transition:border-color 0.3s,box-shadow 0.3s;
+  }
+  .big-stat:hover { border-color:var(--yellow); box-shadow:0 8px 24px rgba(255,196,0,0.1); }
+  .big-stat-num { font-family:'Syne',sans-serif; font-size:36px; font-weight:800; color:var(--yellow); line-height:1; margin-bottom:6px; }
+  .big-stat-label { font-size:12px; color:var(--lgray); line-height:1.4; text-transform:uppercase; letter-spacing:0.5px; }
+
+  /* SPECS TABLE */
+  .specs-table { width:100%; border-collapse:collapse; }
+  .specs-table tr { transition:background 0.2s; }
+  .specs-table tr:hover td { background:rgba(255,196,0,0.05) !important; }
+  .specs-table tr:nth-child(even) td { background:rgba(255,255,255,0.03); }
+  .specs-table td { padding:12px 10px; font-size:13px; border-bottom:1px solid rgba(255,255,255,0.05); vertical-align:top; }
+  .specs-table td:first-child { color:var(--lgray); width:44%; font-size:11px; text-transform:uppercase; letter-spacing:0.6px; }
+  .specs-table td:last-child { color:var(--white); font-weight:500; }
+
+  /* TICKER */
+  .ticker-wrap { background:var(--yellow); overflow:hidden; padding:12px 0; white-space:nowrap; }
+  .ticker { display:inline-flex; animation:ticker 22s linear infinite; gap:0; }
+  .ticker-item {
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'Syne',sans-serif; font-size:13px; font-weight:700;
+    color:var(--dark); padding:0 32px; text-transform:uppercase; letter-spacing:1px;
+  }
+  .ticker-dot { width:6px; height:6px; background:var(--dark); border-radius:50%; opacity:0.4; flex-shrink:0; }
+  @keyframes ticker { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* WARRANTY CARD */
+  .warranty-card {
+    background:linear-gradient(135deg,#2a2a2a,#1e1e1e); border:2px solid var(--yellow);
+    border-radius:20px; padding:30px 22px; text-align:center; margin:0 20px 24px;
+    position:relative; overflow:hidden;
+  }
+  .warranty-card::before {
+    content:''; position:absolute; top:-40px; right:-40px;
+    width:120px; height:120px;
+    background:radial-gradient(circle,rgba(255,196,0,0.15) 0%,transparent 70%);
+    border-radius:50%;
+  }
+  .w-icon { font-size:36px; display:block; margin-bottom:10px; }
+  .warranty-card h3 { font-family:'Syne',sans-serif; font-size:20px; font-weight:800; margin-bottom:10px; }
+  .warranty-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px; }
+  .w-badge { background:rgba(255,196,0,0.08); border:1px solid rgba(255,196,0,0.3); border-radius:14px; padding:16px 10px; }
+  .w-badge-num { font-family:'Syne',sans-serif; font-size:40px; font-weight:800; color:var(--yellow); line-height:1; }
+  .w-badge-label { font-size:11px; color:var(--lgray); text-transform:uppercase; letter-spacing:0.6px; line-height:1.5; margin-top:6px; }
+
+  /* CTA */
+  .promoter-cta {
+    background:linear-gradient(135deg,#1e1e1e,#252525); border-top:3px solid var(--yellow);
+    padding:36px 22px; text-align:center;
+  }
+  .promoter-cta h3 { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; margin-bottom:12px; }
+  .promoter-cta p { font-size:14px; color:rgba(255,255,255,0.6); line-height:1.7; margin-bottom:24px; max-width:320px; margin-left:auto; margin-right:auto; }
+  .cta-btn {
+    display:inline-block; background:var(--yellow); color:var(--dark);
+    font-family:'Syne',sans-serif; font-weight:800; font-size:14px;
+    padding:14px 28px; border-radius:50px; text-decoration:none;
+    transition:transform 0.2s,box-shadow 0.2s;
+    box-shadow:0 4px 20px rgba(255,196,0,0.35);
+  }
+  .cta-btn:hover { transform:scale(1.04); box-shadow:0 8px 30px rgba(255,196,0,0.5); }
+
+  /* PARTICLE */
+  .particle {
+    position:absolute; border-radius:50%; background:rgba(255,196,0,0.6);
+    animation:float var(--dur) var(--delay) ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100%{transform:translateY(0) translateX(0);opacity:0;}
+    20%{opacity:0.8;} 80%{opacity:0.4;}
+    100%{transform:translateY(-200px) translateX(var(--drift));opacity:0;}
+  }
+
+  /* FOOTER */
+  footer {
+    background:var(--dark); border-top:1px solid rgba(255,255,255,0.06);
+    padding:24px 22px; text-align:center; font-size:11px; color:var(--lgray); line-height:1.8;
+  }
+  .footer-logo { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:8px; }
+  .footer-logo span { font-family:'Syne',sans-serif; font-size:14px; font-weight:800; color:var(--white); }
+  .footer-logo span b { color:var(--yellow); font-weight:800; }
+
+  .brand-badge {
+    display:inline-block; background:rgba(255,196,0,0.12);
+    border:1px solid rgba(255,196,0,0.3); color:var(--yellow);
+    font-size:10px; font-weight:700; letter-spacing:1.5px;
+    text-transform:uppercase; padding:4px 12px; border-radius:50px; margin-bottom:14px;
+  }
+
+  /* LG TURBODRUM highlight */
+  .turbo-highlight {
+    background:linear-gradient(135deg,rgba(255,196,0,0.08),rgba(255,196,0,0.03));
+    border:1px solid rgba(255,196,0,0.2); border-radius:14px;
+    padding:16px; margin-top:16px; display:flex; gap:12px; align-items:flex-start;
+  }
+  .turbo-icon { font-size:26px; flex-shrink:0; }
+  .turbo-text strong { display:block; font-size:14px; font-weight:700; color:var(--yellow); margin-bottom:4px; }
+  .turbo-text span { font-size:12px; color:rgba(255,255,255,0.6); line-height:1.5; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div>
+      <div class="brand-name">Keyur Mobile <span>&amp; Electronics</span></div>
+      <div class="brand-sub">Your Trusted Appliance Partner</div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div id="particles"></div>
+
+  <div class="hero-badge">⚡ 2026 Edition</div>
+
+  <div class="wm-hero">
+    <div class="water-ring"></div>
+    <div class="water-ring"></div>
+    <div class="water-ring"></div>
+    <div class="wm-body">
+      <div class="drum-outer">
+        <div class="drum-center"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="brand-badge">LG</div>
+  <h1><em>LG</em> T80KMMB3Z</h1>
+  <div class="model-pill">Model · T80KMMB3Z · 2026</div>
+  <p class="hero-desc">8 Kg Fully Automatic Top Load with ProShield Motor, TurboDrum™, Hard Water Wash &amp; 5-Star Inverter Technology.</p>
+  <div class="stars">★★★★★</div>
+
+  <div class="scroll-hint">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item reveal">
+    <div class="stat-num">8 Kg</div>
+    <div class="stat-label">Capacity</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">740</div>
+    <div class="stat-label">RPM Spin</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">Smart</div>
+    <div class="stat-label">Inverter Motor</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num">5★</div>
+    <div class="stat-label">Energy Rating</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="section-eyebrow reveal">Key Features</div>
+  <h2 class="section-title reveal">Engineered for <em style="color:var(--yellow)">Indian Homes</em></h2>
+
+  <div class="features-grid">
+    <div class="feat-card reveal">
+      <span class="feat-icon">🛡️</span>
+      <div class="feat-title">ProShield™ Motor</div>
+      <p class="feat-desc">Guards against moisture, dust &amp; insects — built for humid laundry environments with IPX4 rated protection.</p>
+    </div>
+    <div class="feat-card reveal">
+      <span class="feat-icon">🌀</span>
+      <div class="feat-title">TurboDrum™</div>
+      <p class="feat-desc">Drum and pulsator spin in opposite directions, creating powerful water currents for deep stain removal.</p>
+    </div>
+    <div class="feat-card reveal">
+      <span class="feat-icon">💧</span>
+      <div class="feat-title">Hard Water Wash</div>
+      <p class="feat-desc">Specially engineered to deliver effective cleaning in hard water — no residue, cleaner and fresher clothes.</p>
+    </div>
+    <div class="feat-card reveal">
+      <span class="feat-icon">🔋</span>
+      <div class="feat-title">Auto Restart</div>
+      <p class="feat-desc">Resumes the exact cycle point after a power cut — saving time, water and energy automatically.</p>
+    </div>
+    <div class="feat-card reveal">
+      <span class="feat-icon">🌿</span>
+      <div class="feat-title">Smart Inverter</div>
+      <p class="feat-desc">5-Star smart inverter reduces power consumption while delivering consistent, reliable performance every wash.</p>
+    </div>
+    <div class="feat-card reveal">
+      <span class="feat-icon">🪣</span>
+      <div class="feat-title">Manual Fill Option</div>
+      <p class="feat-desc">Add water by bucket or tap — ideal for homes with low pressure or irregular water supply.</p>
+    </div>
+    <div class="feat-card wide reveal">
+      <span class="feat-icon">👘</span>
+      <div class="feat-title">Dedicated Saree Course</div>
+      <p class="feat-desc">A large tub with a dedicated saree programme delivers gentle yet effective cleaning — your customer's delicate fabrics get the care they deserve without compromise.</p>
+      <div class="turbo-highlight">
+        <span class="turbo-icon">🔒</span>
+        <div class="turbo-text">
+          <strong>Child Lock + Load Balancing</strong>
+          <span>Prevents accidental tampering and ensures even spin distribution for vibration-free operation.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY BUY -->
+<section class="section">
+  <div class="section-eyebrow reveal">Why Choose It</div>
+  <h2 class="section-title reveal">5 Reasons Your <em style="color:var(--yellow)">Customer Will Love It</em></h2>
+  <ul class="why-list">
+    <li class="why-item reveal">
+      <span class="why-num">01</span>
+      <div class="why-text">
+        <strong>Built for Indian Hard Water</strong>
+        <span>One of the few top-loaders with dedicated hard water wash technology — a real-world solution for most Indian households.</span>
+      </div>
+    </li>
+    <li class="why-item reveal">
+      <span class="why-num">02</span>
+      <div class="why-text">
+        <strong>8 Kg for Bigger Families</strong>
+        <span>Ideal for 4–6 member families — handles daily laundry including heavy blankets and sarees in a single load.</span>
+      </div>
+    </li>
+    <li class="why-item reveal">
+      <span class="why-num">03</span>
+      <div class="why-text">
+        <strong>Motor That Lasts Years</strong>
+        <span>The ProShield Motor with IPX4 is moisture, dust and insect-resistant — backing every purchase with long-term reliability.</span>
+      </div>
+    </li>
+    <li class="why-item reveal">
+      <span class="why-num">04</span>
+      <div class="why-text">
+        <strong>No Power-Cut Worries</strong>
+        <span>Intelligent Auto Restart means your customer never has to re-do a cycle after a power outage — true peace of mind.</span>
+      </div>
+    </li>
+    <li class="why-item reveal">
+      <span class="why-num">05</span>
+      <div class="why-text">
+        <strong>Smart Diagnosis Built-In</strong>
+        <span>LG's Smart Diagnosis lets customers troubleshoot issues quickly via the LG app — reducing service calls and downtime.</span>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- WASH PROGRAMS -->
+<section class="section">
+  <div class="section-eyebrow reveal">Wash Programs</div>
+  <h2 class="section-title reveal">Programs for <em style="color:var(--yellow)">Every Need</em></h2>
+  <div class="programs-scroll reveal">
+    <span class="prog-pill">⚡ Quick Wash</span>
+    <span class="prog-pill">🌸 Delicate</span>
+    <span class="prog-pill">👘 Saree Course</span>
+    <span class="prog-pill">🧹 Self Clean</span>
+    <span class="prog-pill">👶 Baby Care</span>
+    <span class="prog-pill">🛏️ Bedding</span>
+    <span class="prog-pill">💪 Heavy Duty</span>
+    <span class="prog-pill">🌿 Eco Wash</span>
+    <span class="prog-pill">🪣 Tub Clean</span>
+  </div>
+</section>
+
+<!-- BIG STATS -->
+<section class="section">
+  <div class="section-eyebrow reveal">By The Numbers</div>
+  <h2 class="section-title reveal">Impressive <em style="color:var(--yellow)">Performance Stats</em></h2>
+  <div class="big-stats">
+    <div class="big-stat reveal">
+      <div class="big-stat-num">8 Kg</div>
+      <div class="big-stat-label">Wash Capacity</div>
+    </div>
+    <div class="big-stat reveal">
+      <div class="big-stat-num">740</div>
+      <div class="big-stat-label">RPM Max Spin</div>
+    </div>
+    <div class="big-stat reveal">
+      <div class="big-stat-num">5★</div>
+      <div class="big-stat-label">Energy Rating</div>
+    </div>
+    <div class="big-stat reveal">
+      <div class="big-stat-num">IPX4</div>
+      <div class="big-stat-label">Motor Protection</div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS TABLE -->
+<section class="section">
+  <div class="section-eyebrow reveal">Full Specifications</div>
+  <h2 class="section-title reveal">Technical <em style="color:var(--yellow)">Details</em></h2>
+  <table class="specs-table reveal">
+    <tbody>
+      <tr><td>Brand</td><td>LG</td></tr>
+      <tr><td>Model</td><td>T80KMMB3Z (Middle Black)</td></tr>
+      <tr><td>Year</td><td>2026</td></tr>
+      <tr><td>Type</td><td>Fully Automatic Top Load</td></tr>
+      <tr><td>Wash Capacity</td><td>8 Kg</td></tr>
+      <tr><td>Spin Speed</td><td>740 RPM (Max)</td></tr>
+      <tr><td>Motor</td><td>Smart Inverter / ProShield™ Motor</td></tr>
+      <tr><td>Energy Rating</td><td>5 Star</td></tr>
+      <tr><td>Drum Type</td><td>Semi Stainless Steel (TurboDrum™)</td></tr>
+      <tr><td>Drum Dimensions</td><td>540 × 870 × 585 mm (W×H×D)</td></tr>
+      <tr><td>Hard Water Wash</td><td>Yes</td></tr>
+      <tr><td>TurboDrum™</td><td>Yes</td></tr>
+      <tr><td>Auto Restart</td><td>Intelligent Auto Re-Start (power cut resume)</td></tr>
+      <tr><td>Manual Fill</td><td>Yes (bucket or tap)</td></tr>
+      <tr><td>Child Lock</td><td>Yes</td></tr>
+      <tr><td>Load Balancing</td><td>Yes</td></tr>
+      <tr><td>Water Level Selector</td><td>Yes</td></tr>
+      <tr><td>Self Clean</td><td>Yes (Tub Clean)</td></tr>
+      <tr><td>Smart Diagnosis</td><td>Yes</td></tr>
+      <tr><td>ThinQ (Wi-Fi)</td><td>No</td></tr>
+      <tr><td>Water Resistance</td><td>IPX4 (Motor)</td></tr>
+      <tr><td>Colour</td><td>Middle Black</td></tr>
+      <tr><td>Ideal For</td><td>Family of 4–6 Members</td></tr>
+      <tr><td>Warranty</td><td>As per LG India warranty terms</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item"><span class="ticker-dot"></span> ProShield Motor</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> TurboDrum Technology</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Hard Water Wash</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Smart Inverter</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> 5 Star Energy Rating</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> 8 Kg Capacity</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Intelligent Auto Restart</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Smart Diagnosis</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> IPX4 Motor Protection</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="ticker-item"><span class="ticker-dot"></span> ProShield Motor</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> TurboDrum Technology</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Hard Water Wash</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Smart Inverter</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> 5 Star Energy Rating</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> 8 Kg Capacity</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Intelligent Auto Restart</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Smart Diagnosis</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> IPX4 Motor Protection</span>
+  </div>
+</div>
+
+<!-- WARRANTY -->
+<div class="warranty-card reveal" style="margin-top:28px;">
+  <span class="w-icon">🛡️</span>
+  <h3>LG — Trusted Warranty Cover</h3>
+  <p style="color:rgba(255,255,255,0.6); font-size:14px; line-height:1.6;">LG's ProShield Motor and build quality mean fewer breakdowns and longer machine life — backed by LG India's warranty programme.</p>
+  <div class="warranty-grid">
+    <div class="w-badge">
+      <div class="w-badge-num">✔</div>
+      <div class="w-badge-label">Product<br>Warranty</div>
+    </div>
+    <div class="w-badge">
+      <div class="w-badge-num">✔</div>
+      <div class="w-badge-label">Motor<br>ProShield</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="promoter-cta reveal">
+  <h3>Ready to Close the Deal? 🤝</h3>
+  <p>8 Kg powerhouse, hard water wash, TurboDrum™ depth, ProShield Motor, and Smart Diagnosis — your customer gets it all with LG.</p>
+  <a href="#" class="cta-btn">Ask Us for the Best Price →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <span>Keyur Mobile <b>&amp; Electronics</b></span>
+  </div>
+  LG T80KMMB3Z · 2026 Edition<br>
+  Specifications subject to change. Refer to product box for final details.
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.cssText = `left:${Math.random()*100}%;bottom:${Math.random()*20}%;--dur:${4+Math.random()*5}s;--delay:${Math.random()*6}s;--drift:${(Math.random()-0.5)*60}px;width:${2+Math.random()*4}px;height:${2+Math.random()*4}px;opacity:0;`;
+    container.appendChild(p);
+  }
+
+  document.querySelectorAll('.feat-card').forEach((card, i) => { card.style.transitionDelay = (i * 0.05) + 's'; });
+</script>
+</body>
+</html>
